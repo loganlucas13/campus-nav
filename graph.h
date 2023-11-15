@@ -1,8 +1,8 @@
 // graph.h <Starter Code>
-// < Your name >
+// Logan Lucas
 //
-// Basic graph class using adjacency matrix representation.  Currently
-// limited to a graph with at most 100 vertices.
+// Basic graph class using adjacency list representation.
+//
 //
 //
 // Adam T Koehler, PhD
@@ -98,7 +98,7 @@ class graph {
 			set<Edge> edges = {};
 			this->adjList.emplace(v, edges);
 
-			return true;        
+			return true;
         }
 
 
@@ -116,8 +116,8 @@ class graph {
 
 			// add edge in order from->to
 			Edge toAdd = make_pair(to, weight);
-			
-			// time complexity: O(E) where E is the number of edges in a vertex 
+
+			// time complexity: O(E) where E is the number of edges in a vertex
 			// (permitted in project documentation on page 4)
 			for (auto edgePair : adjList[from]) { // checks for duplicate edges
 				if (edgePair.first == toAdd.first) {
@@ -146,7 +146,7 @@ class graph {
 				return false;
 			}
 
-			// time complexity: O(E) where E is the number of edges in a vertex 
+			// time complexity: O(E) where E is the number of edges in a vertex
 			// (permitted in project documentation on page 4)
 			for (auto edgePair : this->adjList.at(from)) {
 				if (edgePair.first == to) { // match found!
