@@ -1,0 +1,24 @@
+I
+J
+K
+L
+M
+N
+O
+P
+#
+I J 100
+J K 125
+K L 12
+I M 80
+M L 20
+M N 30
+N O 60
+O P 7
+O P 115
+I J 1
+J I 27
+O N 37
+M M 27
+M P 20
+#

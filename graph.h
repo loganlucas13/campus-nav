@@ -4,7 +4,6 @@
 // Basic graph class using adjacency list representation.
 //
 //
-//
 // Adam T Koehler, PhD
 // University of Illinois Chicago
 // CS 251, Fall 2023
@@ -62,14 +61,13 @@ class graph {
 
 			set<Edge> edges;
             for (auto vertexPair : other.adjList) {
-				edges.clear(); // erases previous vertex's edges
 				for (auto edgePair : vertexPair.second) { // creates edge set
 					Edge newEdge = make_pair(edgePair.first, edgePair.second);
 					edges.emplace(newEdge);
 				}
 				this->adjList.emplace(vertexPair.first, edges);
+				edges.clear(); // clears previous vertex's edges
 			}
-			edges.clear();
 
 			this->numEdges = other.numEdges;
 
@@ -201,23 +199,20 @@ class graph {
 		// @param: output - stream being output to
 		// @return: none, but output is passed by reference
         void dump(ostream& output) {
-			output << "***************************************************\n";
 			output << "********************* GRAPH ***********************\n";
 
-			output << "**Num vertices: " << this->NumVertices() << endl;
-			output << "**Num edges: " << this->NumEdges() << endl;
+			output << "**Num vertices: " << this->NumVertices() << "\n";
+			output << "**Num edges: " << this->NumEdges() << "\n";
+
+			output << "***************************************************\n\n";
 
 			for (auto vertexPair : this->adjList) { // for every vertex in adjList
 				cout << vertexPair.first << ": ";
-				if (vertexPair.second.size() == 0) { // checks edge set length
-					output << "No edges\n";
+				for (auto edgePair : vertexPair.second) { // for every edge in current vertex's set<Edge>
+					output << "(" << edgePair.first << ", " << edgePair.second << ") ";
 				}
-				else {
-					for (auto edgePair : vertexPair.second) { // for every edge in current vertex's set<Edge>
-						output << "(" << edgePair.first << ", " << edgePair.second << ") ";
-					}
-					output << "\n";
-				}
+				output << "\n";
 			}
+			output << "***************************************************\n";
         }
 };

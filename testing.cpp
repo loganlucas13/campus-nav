@@ -11,7 +11,7 @@
 //
 // This file is used for testing graph.h.  We encourage you to use Google's
 // test framework for this project, but it is not required (because we will
-// not be grading the tests file).  
+// not be grading the tests file).
 //
 
 #include <iostream>
@@ -32,13 +32,13 @@ using namespace std;
 //
 // Inputs the graph vertices and edges from the given file, building
 // the graph g.  File format:
-//   vertex 
+//   vertex
 //   vertex
 //   ...
 //   #
 //   src dest weight
 //   src dest weight
-//   ... 
+//   ...
 //   #
 //
 void buildGraph(string filename, graph<string,int>& G)
@@ -114,7 +114,7 @@ void outputGraph(graph<string,int>& G)
     for (string n : neighbors)
     {
       int weight;
-      
+
       if (G.getWeight(v, n, weight))
       {
         cout << "(" << v << "," << n << "," << weight << ") ";
@@ -145,17 +145,21 @@ int main()
 	cout << "graph 1:\n";
 	buildGraph(filename, G1);
 	outputGraph(G1);
+  cout << "\n";
 	G1.dump(cout);
 
 
 	cout << "\n\nclearing graph 1!\n";
+  cout << "graph 1:\n";
 	G1.clear();
 	outputGraph(G1);
 
 
 	cout << "\n\nrebuilding graph 1!\n";
+  cout << "graph 1:\n";
 	buildGraph(filename2, G1);
 	outputGraph(G1);
+  cout << "\n";
 	G1.dump(cout);
 
 
@@ -163,6 +167,7 @@ int main()
 	cout << "graph 2:\n";
 	G2 = G1;
 	outputGraph(G2);
+  cout << "\n";
 	G2.dump(cout);
 
 	return 0;
