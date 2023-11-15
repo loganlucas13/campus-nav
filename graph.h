@@ -34,12 +34,16 @@ class graph {
 
     public:
         // @brief: default constructor for graph class
+		// @param: none
+		// @return: none
         graph() {
 			this->numEdges = 0;
         }
 
 
         // @brief: removes all vertices and edges
+		// @param: none
+		// @return: none
         void clear() {
 			for (auto vertexPair : this->adjList) {
 				vertexPair.second.clear(); // clears edge set
@@ -74,6 +78,7 @@ class graph {
 
 
         // @brief: gets total # of vertices in graph
+		// @param: none
         // @return: # of vertices in graph
         int NumVertices() const {
             return this->adjList.size();
@@ -81,6 +86,7 @@ class graph {
 
 
         // @brief: gets total # of edges in graph
+		// @param: none
         // @return: # of edges in graph
         int NumEdges() const {
             return this->numEdges;
@@ -91,6 +97,7 @@ class graph {
         // @param: v - vertex to add
         // @return: false if vertex already exists, true otherwise
         bool addVertex(VertexT v) {
+			// vertex already exists
 			if (this->adjList.find(v) != this->adjList.end()) { // std::map.find() time complexity: O(log n)
 				return false;
 			}
@@ -109,6 +116,7 @@ class graph {
         // @param: weight - weight value of edge
         // @return: false if either vertex doesn't exist, otherwise true
         bool addEdge(VertexT from, VertexT to, WeightT weight) {
+			// if either vertex doesn't exist
 			if (this->adjList.find(from) == this->adjList.end() || // std::map.find() time complexity: O(log n)
 				this->adjList.find(to) == this->adjList.end()) {
 				return false;
@@ -141,6 +149,7 @@ class graph {
         // @param: weight - pass by reference; updated during function call
         // @return: false if either vertex doesn't exist, otherwise true
         bool getWeight(VertexT from, VertexT to, WeightT& weight) const {
+			// if either vertex doesn't exist
             if (this->adjList.find(from) == this->adjList.end() || // std::map.find() time complexity: O(log n)
 				this->adjList.find(to) == this->adjList.end()) {
 				return false;
@@ -174,6 +183,7 @@ class graph {
 
 
         // @brief: returns all vertices in the graph
+		// @param: none
         // @return: vector of all vertices
         vector<VertexT> getVertices() const {
 			vector<VertexT> vertices;
@@ -189,6 +199,7 @@ class graph {
         // @brief: for debugging purposes
 		//         outputs graph information to a stream
 		// @param: output - stream being output to
+		// @return: none, but output is passed by reference
         void dump(ostream& output) {
 			output << "***************************************************\n";
 			output << "********************* GRAPH ***********************\n";
@@ -196,13 +207,13 @@ class graph {
 			output << "**Num vertices: " << this->NumVertices() << endl;
 			output << "**Num edges: " << this->NumEdges() << endl;
 
-			for (auto vertexPair : this->adjList) {
+			for (auto vertexPair : this->adjList) { // for every vertex in adjList
 				cout << vertexPair.first << ": ";
-				if (vertexPair.second.size() == 0) {
+				if (vertexPair.second.size() == 0) { // checks edge set length
 					output << "No edges\n";
 				}
 				else {
-					for (auto edgePair : vertexPair.second) {
+					for (auto edgePair : vertexPair.second) { // for every edge in current vertex's set<Edge>
 						output << "(" << edgePair.first << ", " << edgePair.second << ") ";
 					}
 					output << "\n";
