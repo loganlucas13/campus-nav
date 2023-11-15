@@ -42,9 +42,9 @@ class graph {
         // @brief: removes all vertices and edges
         void clear() {
 			for (auto vertexPair : this->adjList) {
-				vertexPair.second.clear();
+				vertexPair.second.clear(); // clears edge set
 			}
-			this->adjList.clear();
+			this->adjList.clear(); // clears vertices
 
 			this->numEdges = 0;
         }
@@ -58,8 +58,8 @@ class graph {
 
 			set<Edge> edges;
             for (auto vertexPair : other.adjList) {
-				edges.clear();
-				for (auto edgePair : vertexPair.second) {
+				edges.clear(); // erases previous vertex's edges
+				for (auto edgePair : vertexPair.second) { // creates edge set
 					Edge newEdge = make_pair(edgePair.first, edgePair.second);
 					edges.emplace(newEdge);
 				}
@@ -116,6 +116,17 @@ class graph {
 
 			// add edge in order from->to
 			Edge toAdd = make_pair(to, weight);
+			
+			// time complexity: O(E) where E is the number of edges in a vertex 
+			// (permitted in project documentation on page 4)
+			for (auto edgePair : adjList[from]) { // checks for duplicate edges
+				if (edgePair.first == toAdd.first) {
+					adjList[from].erase(edgePair); // since adjList[from] is a std::set, we must erase the element and reinsert w/ a new weight value
+					this->numEdges--; // makes sure that this->numEdges doesn't count the ORIGINAL element and the NEW element
+					break;
+				}
+			}
+
 			this->adjList[from].emplace(toAdd);
 
 			this->numEdges++;
@@ -138,8 +149,9 @@ class graph {
 			// time complexity: O(E) where E is the number of edges in a vertex 
 			// (permitted in project documentation on page 4)
 			for (auto edgePair : this->adjList.at(from)) {
-				if (edgePair.first == to) {
+				if (edgePair.first == to) { // match found!
 					weight = edgePair.second;
+					break;
 				}
 			}
 			return true;
