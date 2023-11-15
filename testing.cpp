@@ -132,25 +132,38 @@ void outputGraph(graph<string,int>& G)
 
 int main()
 {
-  graph<string,int> G(26);
-  string filename;
-  string startV;
+	graph<string, int> G1;
+	graph<string, int> G2;
+	string filename;
+	string filename2;
+	string startV;
 
-  cout << "Enter filename containing graph data> ";
-  cin >> filename;
-  cout << endl;
+	filename = "graph.txt";
+	filename2 = "graph2.txt";
 
-  //
-  // Let's input the graph, and then output to see what we have:
-  //
-  buildGraph(filename, G);
-  
-  outputGraph(G);
-  
-  G.dump(cout);
 
-  //
-  // done:
-  //
-  return 0;
+	cout << "graph 1:\n";
+	buildGraph(filename, G1);
+	outputGraph(G1);
+	G1.dump(cout);
+
+
+	cout << "\n\nclearing graph 1!\n";
+	G1.clear();
+	outputGraph(G1);
+
+
+	cout << "\n\nrebuilding graph 1!\n";
+	buildGraph(filename2, G1);
+	outputGraph(G1);
+	G1.dump(cout);
+
+
+	cout << "\n\ntesting = operator!\n";
+	cout << "graph 2:\n";
+	G2 = G1;
+	outputGraph(G2);
+	G2.dump(cout);
+
+	return 0;
 }

@@ -17,3 +17,6 @@ clean:
 
 valgrind:
 	valgrind --tool=memcheck --leak-check=yes ./application.exe
+
+valgrindtest:
+	valgrind --tool=memcheck --leak-check=yes ./testing.exe
