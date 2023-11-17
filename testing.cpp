@@ -1,5 +1,5 @@
 // testing.cpp <Starter Code>
-// <Your name>
+// Logan Lucas
 //
 // Adam T Koehler, PhD
 // University of Illinois Chicago

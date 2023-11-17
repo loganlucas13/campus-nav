@@ -1,5 +1,5 @@
 // application.cpp <Starter Code>
-// <Your name>
+// Logan Lucas
 //
 //
 // Adam T Koehler, PhD
@@ -56,12 +56,18 @@ void application(
 		cout << "Enter person 2's building (partial name or abbreviation)> ";
 		getline(cin, person2Building);
 
+		// TODO: MILESTONE 7: search buildings 1 and 2
 
-		//
-		// TO DO: lookup buildings, find nearest start and dest nodes, find center
-		// run Dijkstra's alg from each start, output distances and paths to destination:
-		//
+		// while (path is not found) {
+		// TODO: MILESTONE 8: locate center building
 
+		// TODO: MILESTONE 9: find nearest nodes from buildings 1, 2, and center
+
+		// TODO: MILESTONE 10: run Dijkstra's algorithm
+
+		// TODO: MILESTONE 11: find second nearest destination (loop again)
+
+		// }
 
 		// cout << "Person 1's building not found" << endl;
 		// cout << "Person 2's building not found" << endl;
@@ -137,14 +143,19 @@ int main() {
 	cout << "# of footways: " << Footways.size() << endl;
 	cout << "# of buildings: " << Buildings.size() << endl;
 
+	// TODO: MILESTONE 5: add vertices - DONE
+	for (auto node : Nodes) {
+		G.addVertex(node.first);
+	}
 
-	//
-	// TO DO: build the graph, output stats:
-	//
+	// TODO: MILESTONE 6: add edges
 
 
-	// cout << "# of vertices: " << G.NumVertices() << endl;
-	// cout << "# of edges: " << G.NumEdges() << endl;
+
+	// TODO: uncomment code after milestone 6
+
+	cout << "# of vertices: " << G.NumVertices() << endl;
+	cout << "# of edges: " << G.NumEdges() << endl;
 	cout << endl;
 
 	// Execute Application
