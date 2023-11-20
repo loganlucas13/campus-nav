@@ -116,16 +116,23 @@ Coordinates findNearestNode(const BuildingInfo building, const map<long long, Co
 }
 
 
+// @brief: prints out a building's info (formatted)
+// @param: building - building to print
+// @return: none
 void printBuilding(const BuildingInfo building) {
 	cout << " " << building.Fullname << "\n";
 	cout << " (" << building.Coords.Lat << ", " << building.Coords.Lon << ")\n";
 }
 
 
+// @brief: prints out a node's info (formatted)
+// @param: node - node to print
+// @return: none
 void printNode(const Coordinates node) {
 	cout << " " << node.ID << "\n";
 	cout << " (" << node.Lat << ", " << node.Lon << ")\n";
 }
+
 
 //
 // Implement your standard application here
@@ -153,7 +160,7 @@ void application(
 			cout << "Person 2's building not found\n";
 		}
 		else {
-			
+
 			// locates center building
 			Coordinates c1 = building1.Coords;
 			Coordinates c2 = building2.Coords;
@@ -265,7 +272,7 @@ int main() {
 	for (auto node : Nodes) {
 		G.addVertex(node.first);
 	}
-	
+
 	// add edges
 	for (auto footway : Footways) {
 		for (size_t i = 0; i < footway.Nodes.size()-1; i++) {
