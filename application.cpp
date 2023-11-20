@@ -30,6 +30,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <cassert>
+#include <queue>
 
 #include "tinyxml2.h"
 #include "dist.h"
@@ -41,6 +42,15 @@ using namespace std;
 using namespace tinyxml2;
 
 const double INF = numeric_limits<double>::max();
+
+typedef pair<long long, double> vertexDistance;
+
+class prioritize {
+	public:
+	bool operator()(const vertexDistance& p1, const vertexDistance& p2) const {
+		return p1.second > p2.second;
+	}
+};
 
 
 // @brief: searches for building in Buildings vector
@@ -131,6 +141,15 @@ void printBuilding(const BuildingInfo building) {
 void printNode(const Coordinates node) {
 	cout << " " << node.ID << "\n";
 	cout << " (" << node.Lat << ", " << node.Lon << ")\n";
+}
+
+
+// @brief: run's Dijkstra's algorithm
+// @param: start - first vertex
+// @return: none
+void dijkstras(long long start) {
+	priority_queue<vertexDistance, vector<vertexDistance>, prioritize> unvisitedQueue;
+
 }
 
 
