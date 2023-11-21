@@ -1,9 +1,13 @@
-// graph.h <Starter Code>
+// graph.h
+
 // Logan Lucas
-//
-// Basic graph class using adjacency list representation.
-//
-//
+// CS 251
+// Fall 2023
+// Project 5: Open Street Maps
+
+// This program finds the nearest destination route throughout nodes using Dijkstra's algorithm and graphs
+
+
 // Adam T Koehler, PhD
 // University of Illinois Chicago
 // CS 251, Fall 2023
@@ -215,4 +219,11 @@ class graph {
 			}
 			output << "***************************************************\n";
         }
+
+		// @brief: returns adjacency list member
+		// @param: none
+		// @return: this->adjList
+		map<VertexT, set<Edge>> getAdjList() {
+			return this->adjList;
+		}
 };
