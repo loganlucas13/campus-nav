@@ -162,10 +162,10 @@ class graph {
 			for (auto edgePair : this->adjList.at(from)) {
 				if (edgePair.first == to) { // match found!
 					weight = edgePair.second;
-					break;
+					return true;
 				}
 			}
-			return true;
+			return false;
         }
 
 
@@ -175,6 +175,10 @@ class graph {
         // @return: set of all neighbors of v
         set<VertexT> neighbors(VertexT v) const {
 			set<VertexT> neighbors;
+
+			if (this->adjList.find(v) == this->adjList.end()) {
+				return neighbors;
+			}
 
 			for (auto edgePair : this->adjList.at(v)) {
 				neighbors.emplace(edgePair.first);
