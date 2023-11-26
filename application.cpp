@@ -164,12 +164,12 @@ distancesAndPredecessors dijkstras(long long start, graph<long long, double> G) 
 
 	set<long long> visited;
 
-	for (auto vertex : G.getAdjList()) {
-		distances.emplace(vertex.first, INF);
-		predecessors.emplace(vertex.first, 0);
+	for (auto vertex : G.getVertices()) {
+		distances.emplace(vertex, INF);
+		predecessors.emplace(vertex, 0);
 		vertexDistance newDistance;
-		if (vertex.first != start) {
-			newDistance = make_pair(vertex.first, INF);
+		if (vertex != start) {
+			newDistance = make_pair(vertex, INF);
 		}
 		else {
 			distances[start] = 0;
@@ -177,7 +177,7 @@ distancesAndPredecessors dijkstras(long long start, graph<long long, double> G) 
 		}
 		unvisitedQueue.push(newDistance);
 	}
-	
+
 	while (!unvisitedQueue.empty()) {
 		long long currentVertex = unvisitedQueue.top().first;
 		unvisitedQueue.pop();
@@ -194,7 +194,7 @@ distancesAndPredecessors dijkstras(long long start, graph<long long, double> G) 
 			for (auto adjacentVertex : G.neighbors(currentVertex)) {
 				double edgeWeight;
 				G.getWeight(currentVertex, adjacentVertex, edgeWeight); // updates edgeWeight by reference
-				
+
 				double altDistance = distances[currentVertex] + edgeWeight;
 
 				if (altDistance < distances[adjacentVertex]) {
@@ -330,7 +330,7 @@ void application(
 
 			distances2 = dijkstraReturn2.first;
 			predecessors2 = dijkstraReturn2.second;
-			
+
 			if (distances1[node2.ID] >= INF) { // enter new buildings
 				cout << "Sorry, destination unreachable.\n";
 			}

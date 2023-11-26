@@ -224,10 +224,4 @@ class graph {
 			output << "***************************************************\n";
         }
 
-		// @brief: returns adjacency list member
-		// @param: none
-		// @return: this->adjList
-		map<VertexT, set<Edge>> getAdjList() {
-			return this->adjList;
-		}
 };
